@@ -1,11 +1,12 @@
 /**
- * 演示：单引号键/值、尾随逗号、JSON5 未加引号键名、Python 风格 True/False、嵌套与数组。
- * 字符串内的 True 不应被改写。
+ * 演示：单引号键/值、尾随逗号、JSON5 未加引号键名、Python 风格 True/False/None、嵌套与数组。
+ * 字符串内的 True 不应被改写；None 会变为空字符串。
  */
 export const SAMPLE_RELAXED_JSON = `{
   title: 'JSON 校验示例',
   enabled: True,
   disabled: False,
+  empty: None,
   'quoted-key': 42,
   note: "说明里写 True 不应被当成布尔值",
   nested: {

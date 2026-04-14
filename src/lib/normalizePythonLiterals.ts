@@ -3,7 +3,9 @@ function isIdentChar(c: string): boolean {
 }
 
 /**
- * 在字符串字面量与注释之外，将独立的 `True` / `False` 替换为 JSON5 可解析的 `true` / `false`。
+ * 在字符串字面量与注释之外：
+ * - 独立的 `True` / `False` → `true` / `false`
+ * - 独立的 `None` → `""`（空字符串，便于后续 JSON.stringify 格式化）
  */
 export function normalizePythonLiterals(input: string): string {
   const out: string[] = []
@@ -79,6 +81,14 @@ export function normalizePythonLiterals(input: string): string {
     const isWordStart = i === 0 || !isIdentChar(prev)
 
     if (isWordStart) {
+      if (input.slice(i, i + 4) === 'None') {
+        const after = input[i + 4]
+        if (after === undefined || !isIdentChar(after)) {
+          out.push('""')
+          i += 4
+          continue
+        }
+      }
       if (input.slice(i, i + 4) === 'True') {
         const after = input[i + 4]
         if (after === undefined || !isIdentChar(after)) {

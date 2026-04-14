@@ -95,7 +95,8 @@ function App() {
         <h1 className="app__title">JSON 校验与格式化</h1>
         <p className="app__subtitle">
           支持单引号、尾随逗号等 JSON5 语法；自动将引号外的{' '}
-          <code>True</code> / <code>False</code> 转为合法布尔值。数据仅在浏览器本地处理。
+          <code>True</code> / <code>False</code> 转为合法布尔值，<code>None</code>{' '}
+          转为空字符串。数据仅在浏览器本地处理。
         </p>
       </header>
 
@@ -130,7 +131,7 @@ function App() {
               载入示例数据
             </button>
             <span className="app__sample-desc">
-              含单引号、True/False、尾随逗号与嵌套，载入后自动校验并切到树视图
+              含单引号、True/False/None、尾随逗号与嵌套，载入后自动校验并切到树视图
             </span>
           </div>
           <textarea
