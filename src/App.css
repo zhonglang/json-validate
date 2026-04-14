@@ -82,6 +82,34 @@
   color: var(--text);
 }
 
+.app__sample-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.app__sample-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.app__sample-btn {
+  flex-shrink: 0;
+}
+
+.app__sample-desc {
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
 .app__textarea {
   flex: 1;
   width: 100%;

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { JsonTree } from './components/JsonTree'
+import { SAMPLE_RELAXED_JSON } from './data/sampleInput'
 import { parseUserJson } from './lib/parseUserJson'
 import './App.css'
 
@@ -58,6 +59,12 @@ function App() {
     setParseInput(raw)
   }, [raw])
 
+  const loadSample = useCallback(() => {
+    setRaw(SAMPLE_RELAXED_JSON)
+    setParseInput(SAMPLE_RELAXED_JSON)
+    setTab('tree')
+  }, [])
+
   const onCopy = useCallback(
     async (text: string) => {
       const ok = await copyText(text)
@@ -112,6 +119,19 @@ function App() {
               </button>
               <span className="app__hint">输入后约 0.4s 自动校验</span>
             </div>
+          </div>
+          <div className="app__sample-row">
+            <span className="app__sample-label">快速试用</span>
+            <button
+              type="button"
+              className="btn btn--ghost app__sample-btn"
+              onClick={loadSample}
+            >
+              载入示例数据
+            </button>
+            <span className="app__sample-desc">
+              含单引号、True/False、尾随逗号与嵌套，载入后自动校验并切到树视图
+            </span>
           </div>
           <textarea
             id="json-input"
